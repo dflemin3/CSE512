@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  <title>CSE512 Assignment 2</title>
+  <style>
+* { padding: 0; margin: 0; }
+
+body {
+  margin: 0 auto 0 auto;
+  padding: 0;
+  background-color: #33333f;
+  width: 840px;
+  font-family: "Avenir", "Avenir Next", Helvetica Neue, Arial;
+  font-size: 0.95em;
+}
+
+a, a:visited { text-decoration: none; color: #7533f4; }
+a:hover { text-decoration: underline; color: #f4b014; }
+img, a.img, a:hover.img { border: none; }
+
+img {
+  max-width: 800px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #492a7c;
+  background-color: inherit;
+  font-weight: normal;
+  padding: 0 0 5px 0;
+  margin: 15px 0 0 0;
+  border: none;
+  clear: right;
+}
+h1 { font-size: 18pt; margin:  5px 0 10px 0; line-height: 28px; }
+h2 { font-size: 14pt; margin: 30px 0 15px 0; letter-spacing: 0.01em; border-bottom: 1px solid #ccc;  line-height: 20px;}
+h3 { font-size: 13pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 11pt; }
+p { margin: 0 0 10px 0; }
+hr { border: 0px; border-top: 1px solid #ccc; height: 0px; }
+ol { margin: 1em; }
+
+.content {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+
+.article {
+  line-height: 1.5em;
+}
+
+.entry  {
+  border-top: 1px solid #ddd;
+  padding-top: 2px;
+  margin-top: 3em;
+}
+  </style>
+</head>
+
+<body>
+<div class='content'>
+
+<section>
+  <h1>Assignment 2: Exploratory Data Analysis</h1>
+
+  <p>
+    <strong>David Fleming</strong> &mdash;
+    <em>dflemin3@uw.edu</em>
+  </p>
+</section>
+
+<section>
+  <h2>Dataset</h2>
+
+  <p>
+    ENTER A DESCRIPTION OF YOUR DATA SET HERE.<br/>
+    What is this data about? Who produced this dataset? Why are you interested in it?
+  </p>
+
+  <p>
+    The data is available online at:
+    <strong>
+      <a href="https://courses.cs.washington.edu/courses/cse512/18sp/data/weather.csv.gz">https://courses.cs.washington.edu/courses/cse512/18sp/data/weather.csv.gz</a>
+    </strong>
+  </p>
+</section>
+
+<section>
+  <h2>Initial Analysis Questions</h2>
+  <ol>
+    <li>What can daily weather data reveal severe weather in the Midwest?</li>
+    <li>Can one identify "Tornado Season" (roughly May to June) in "Tornado Alley" based off of daily wind speed and rain data??</li>
+    <li>Which areas undergo the most extreme temperature differences from day-to-day?  How is this correlated with snow, precipitation?</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Discoveries &amp; Insights</h2>
+
+  <div class="entry">
+    <img src="averageWindSpeeds.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxWindSpeedMonth.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxVsAvgWindSpeed.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="rainWindSpeed.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="totalPrecipQuarters.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="tornados.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxWindPerMonth.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="snowStateMonthArea.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="variableTemp.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+
+  <div class="entry">
+    <h3>Summary</h3>
+    <p>
+    WRITE FINAL SUMMARY HERE.
+    </p>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

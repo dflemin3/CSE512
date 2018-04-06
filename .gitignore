@@ -2,4 +2,6 @@ Readings/
 Lectures/
 .DS_Store
 .ipynb_checkpoints/
+*.twb
+*.twbr
 *.zip

@@ -1,0 +1,12 @@
+PRCP = Precipitation (inch)
+SNOW = Snowfall (inch)
+SNWD = Snow depth (inch)
+TMAX = Maximum temperature (F)
+TMIN = Minimum temperature (F)
+TAVG = Average temperature (F)
+AWND = Average daily wind speed (miles / hour)
+WSF5 = Fastest 5-second wind speed (miles / hour)
+WDF5 = Direction of fastest 5-second wind (degrees)
+
+For more information, see:
+ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt
