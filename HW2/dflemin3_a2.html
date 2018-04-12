@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xml:lang="en" lang="en">
 <head>
-  <title>CSE512 Assignment 2</title>
+  <title>CSE512 Assignment 2 - dflemin3</title>
   <style>
 * { padding: 0; margin: 0; }
 
@@ -79,12 +79,13 @@ ol { margin: 1em; }
     (NOAA) Daily Global Historical Climatology Network, includes information regarding
     the temperature, precipitation accumulation, wind speed and direction, and snow accumulation
     and depth for 100s of station in all U.S. states and territories. As a native
-    of the Midwest, a common phrase I heard while growing up is:
-    "If you don't like the weather, wait an hour."  This rich dataset provides an
-    opportunity to examine the extreme variability of Midwestern weather with exquisite
-    spatial and temporal precision.  To probe this variability, my analysis will
-    focus on the four main facets of punishing Midwestern weather: rain, wind, heat,
-    and snow.
+    of the Midwest, I grew up hoping for snowstorms to force school cancellations in the
+    winter, and watching intense early-summer thunderstorms roll across town.
+    Severe, and often variable weather, is a cornerstone of life in the Midwest, and I
+    hope to capture and analyse these phenomena. This rich dataset provides an
+    opportunity to examine the extreme Midwestern weather with exquisite
+    spatial and temporal precision.  My analysis will focus on the four main
+    facets of punishing Midwestern weather: rain, wind, heat, and snow.
 
     Note that in this analysis, I consider the Midwest to consist of South Dakota,
     Iowa, Nebraska, Kansas, Missouri, Oklahoma, and North Texas (north of Austin, TX).
@@ -92,8 +93,6 @@ ol { margin: 1em; }
     Illinois, Minnesota, why any part Texas, at all?), but my definition looks at the
     "Midwest" where the extreme weather most commonly occurs, a subset of the region
     commonly referred to as <a href="https://en.wikipedia.org/wiki/Tornado_Alley">"Tornado Alley"</a>.
-
-    TODO: make plot of measurement counts vs station?
   </p>
 
   <p>
@@ -109,9 +108,10 @@ ol { margin: 1em; }
   <ol>
     <li><b>Overarching Question:</b> What can daily weather data reveal about extreme weather in the Midwest?</li>
     <li>Which regions in the Midwest undergo the strongest winds?</li>
-    <li>Can one identify tornados, or when tornado season is, based off of the daily wind speed and rain data?</li>
+    <li>Can one identify tornados based off of the daily wind speed and rain data?</li>
+    <li>Can I map severe Midwestern storms using daily wind speed and rain data?</li>
     <li>Where, and under what conditions, do Midwestern blizzards occur?</li>
-    <li>Which areas undergo the most extreme temperature differences?</li>
+    <li>Which areas undergo the highest temperatures and most extreme temperature differences?</li>
   </ol>
 </section>
 
@@ -121,119 +121,227 @@ ol { margin: 1em; }
   <div class="entry">
     <img src="avgGustSpeed.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    First, let's examine the distribution of stations in my definition of the Midwest by
+    plotting a point for each station on the map.  I color the points by the average
+    maximum 5-second sustained wind speed, which I define here as a "gust", to get a handle
+    of the wind topography of the region. The stations mostly cluster in cities
+    (see the noticable clusters near Dallas, TX, Oklahoma City, OK, St. Louis, MO, etc)
+    and many stations are actually located at airports.  From the point colors,
+    we can see that the gust speed is on average faster in the western
+    "plains region" of the Midwest, the flat farm lands in north Texas, western
+    OK, KS, NE, and SD.
     </p>
   </div>
 
   <div class="entry">
     <img src="maxWindSpeedMonth.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Given the trends seen in the previous figure, let's examine the maximum gust speed
+    in each state for each month in the dataset to identify where and when the most
+    intense gusts occur (note that the table redundantly encodes maximum gust speed for
+    clarity).  I display the maximum recorded gust speed by a station in each state
+    and cut the color for maximum speed at 90 MPH, a rough minimum speed required for
+    a windstorm to be a tornado (<a href="https://en.wikipedia.org/wiki/Fujita_scale">see the Fujita Scale</a>).
+    Most states seem to have the most intense gusts from May-August (tornado season?) and several states had stations
+    record extreme gusts in excess of 90 MPH, potential tornados.  Note that in this dataset, we do not have data
+    for October, November, or December, so our analysis is limited to the Winter, Spring and Summer months.
     </p>
   </div>
 
   <div class="entry">
     <img src="averageWindSpeeds.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Similar to the previous figure, I plot the average wind speed each month, for each state
+    to see if it correlates with the maximum gust speed.  For all states, the average wind
+    speeds peak from around February to May, with South Dakota consistently having fast
+    average wind speeds.  One would expect faster gust to occur when the average wind speed
+    is high, if there are more storms in the region, for example, but that does not seem to
+    be the case for any state, except maybe South Dakota.
     </p>
   </div>
 
   <div class="entry">
     <img src="maxVsAvgWindSpeed.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    To examine the maximum gust speed (maximum 5-second wind speed) and average wind
+    speed correlation further, we plot these two quantities for all stations (some labeled) in our sample
+    for 3 quarters, Winter, Spring, and Summer, and plot trend lines, with errors. There are several stations
+    that did not record any wind speed information (colored in orange), so I put those points at the origin.
+    There does not appear to be a correlation during the Winter months (Q1), but there is a weak positive
+    correlation during the Spring and Summer (Q2, Q3, respectively).
     </p>
   </div>
 
   <div class="entry">
     <img src="tornados.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    What about extremely strong wind gusts at individual stations in 2017, can we identify tornados?
+    I plot the location of all the stations and color them by the maximum recorded wind gust and
+    identify the stations with the fastest gusts.  There are several with gusts of at least the
+    threshold for a tornado, about 90 MPH, with two stations recording gusts in excess of 100 MPH, with
+    one recording a gust of 170 MPH at Lee's Summit Municipal Airport in Missouri.  Either these are
+    errant data, extreme gusts, or tornado detections!
     </p>
   </div>
 
   <div class="entry">
     <img src="maxWindPerMonth.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
-    </p>
-  </div>
-
-  <div class="entry">
-    <img src="rainWindSpeed.png" />
-    <p class="caption">
-    ENTER IMAGE CAPTION HERE.
-    </p>
-  </div>
-
-  <div class="entry">
-    <img src="totalPrecipQuarters.png" />
-    <p class="caption">
-    ENTER IMAGE CAPTION HERE.
-    </p>
-  </div>
-
-  <div class="entry">
-    <img src="mostRainByStation.png" />
-    <p class="caption">
-    ENTER IMAGE CAPTION HERE.
-    </p>
-  </div>
-
-  <div class="entry">
-    <img src="maxPrecipMonth.png" />
-    <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Next, let's probe the data quality at the 4 stations with the fastest gusts in 2017
+    by examining their fastest recorded gust speeds over each month.  The points are colored
+    by station and the point sizes indicate the maximum average daily wind speed recorded by
+    that station in that month.  The tornado candidates, station maximum gust speeds exceeding
+    about 90 MPH, clearly stand out amongst the seasonal wind speed trend.  Three appear like real
+    tornado candidates, but the Pine Ridge Airport's maximum recorded gust speed equals the maximum average
+    daily wind speed, so unless there was a tornado-like storm all day, that data point is probably an error.
     </p>
   </div>
 
   <div class="entry">
     <img src="maxPrecipMaxGust.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Severe storms that produce high winds, and potentially tornados, often unlease torrential rains.
+    To see if this trend is reflected in the data, I plot, for each weather station, the maximum
+    precipitation recorded in a day as the station point size and color the points by the maximum
+    recorded gust speed.  Note that typically precipitation includes snow, but in this dataset,
+    precipitation corresponds to rain and/or melted snow (see <a href="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/readme.txt">here</a> for more info).
+    The stations that record the most rain are at the Southern end of my
+    latitude cut in Texas by the Gulf of Mexico and are likely recording rain from tropical storms,
+    especially given the low gust speeds, a hallmark of sub-hurricane level winds.  Although several
+    station that record lots of rain also measure strong gusts, like in southern Oklahoma and
+    southeastern Nebraska, there does not appear to be a strong link between maximum gust speeds and
+    maximum precipitation.  Note that most stations in South Dakota are missing maximum precipitation data.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="rainWindSpeed.png" />
+    <p class="caption">
+    If the maximum rain recorded in a day does not correlate with the maximum recorded gust,
+    does total rain accumulation correlate with average daily wind speeds (plotted above,
+    for each station)?  Note that several stations did not record average daily winds speeds, so I
+    colored these points in grey to distinguish them from the rest of the dataset.  There is a
+    noticable negative correlation between total precipitation and average daily wind speed suggesting
+    that windier areas get less rain, altough there is a significant amount of scatter.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="totalPrecipQuarters.png" />
+    <p class="caption">
+    Previously we saw that the maximum gust speeds and highest average daily wind speeds occured
+    in the Spring and Summer, so here I plot the total recorded precipitation (color) for each station
+    over the three seasons (quarters) to see if there is a similar trend.  There is little precipitation
+    during the Winter, which makes sense since in the Midwest at that time of year, it is likely cold
+    enough that any precipitation would be recorded as snow.  There is substantial amounts of rain recorded
+    in Southern Missouri near the MO-OK-KS border in the Spring, corresponding to thunderstorms that
+    frequently roll through this area during the late Spring, and Texan stations near the Gulf of Mexico receive
+    a substantial amount of rain in the Summer.  Seasonal rain totals seem to align with the maximum gust speeds
+    displayed above, but its not clear if severe weather is the root cause.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="mostRainByStation.png" />
+    <p class="caption">
+    To examine how severe storms contribute to the stations' rain totals, I plot the
+    maximum recorded rain totals during the Winter, Spring, and Summer (Q1, Q2, and Q3, respectively)
+    for each station. In Missouri, Kansas, and Oklahoma, severe storms dumped a maximum of about 5 inches of
+    rain during the spring, perhaps during the same storm front, while intense rains accumulated about 8 inches
+    in Texas near the Gulf of Mexico.  Note that most stations in South Dakota are missing maximum precipitation data.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxPrecipMonth.png" />
+    <p class="caption">
+    Now I plot maximum monthly precipitation by state, assuming that all stations in a state
+    contribute to the state's total, by month to see when each state receives the most of its rain.
+    We see clear peaks in April from Missouri's April showers, and in August from the Texan Gulf of Mexico
+    rain storms seen earlier.  Both South Dakota and Iowa have few intense storms that drop a lot of rain, while
+    Missouri, Oklahoma, and Texas all have numerous storms that drop inches of rain at a time.
     </p>
   </div>
 
   <div class="entry">
     <img src="snowStateMonthArea.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Now I examine a different type of precipitation, snow, by plotting the state-by-state snow totals, again
+    assuming that each state's stations totals contribute to the state's total.  Both Iowa and Nebraska dominate
+    the snow totals with most of this snow falling during January and February.  South Dakota would presumably
+    receive even more snow since it is north of both of those states, but there was no snow data for South Dakota.
+    I truncated this figure at June as no state recorded appreciable snow once the Summer began since as temperatures rise,
+    precipitation will obviously preferentially fall as rain.
     </p>
   </div>
 
   <div class="entry">
     <img src="blizzard.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Given the state-by-state monthly totals, let's look at individual stations to see when extreme blizzards occur.
+    Specifically, how does maximum snow accumulation correlate with minimum average temperature. Many stations did not
+    record minimum temperatures or snow accumulations and are shown in orange.  As expected, appreciable snow measurements
+    are recorded for minimum temperatures below freezing (32 degrees F).  The Scottsbluff, NE station had a particularly
+    intense blizzard with over 14 inches of snow and a sub-zero minimum temperature.  Many stations in Texas got cold
+    enough for snow, but none was record.
     </p>
   </div>
 
   <div class="entry">
     <img src="avgMonthlyTemp.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    Now to pivot to examine Midwestern temperatures, I plot the average monthly temperatures
+    for each state based on station-by-station data for each month (note that the South Dakota
+    data is incomplete and set to 0).  As expected, temperatures are lowest during the Winter
+     and peak during the Summer with the most southern states reaching the highest
+     temperatures, i.e. Texas, and the northern-most states reaching the lowest temperatures (Iowa).
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="highTempHist.png" />
+    <p class="caption">
+    Midwestern temperatures can get brutally hot, so I plot a stacked histogram of
+    recorded high temperatures for each state.  Texas dominates the temperature highs with
+    many maximum temperatures populating the 100-110 degrees F bin!  Most states' maximum
+    temperatures range from 70-95 degrees F with the mode of the distribution located
+    around 90 degrees F.  Midwestern summers get quite hot.
     </p>
   </div>
 
   <div class="entry">
     <img src="variableTemp.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+     A common phrase I heard while growing up in the Midwest is: "If you don't like the weather, wait an hour."
+     In this figure, I plot the standard deviation of a state's stations average temperature measurements for
+     each month, a measure of how much the temperature changes in each state for each month.  Interestingly,
+     temperatures are most variable during the Winter months and least variable during the Summer months.
+     South Dakota consistently has the most variable temperatures with other flat plains states, Iowa and
+     Nebraska, also having higher variability than other Midwestern states.
     </p>
   </div>
 
   <div class="entry">
     <img src="maxDeltaT.png" />
     <p class="caption">
-    ENTER IMAGE CAPTION HERE.
+    As an additional measure of temperature variability, I compute the maximum difference between the maximum
+    and minimum temperature for each state for each month to gauge what were the most extreme observed
+    temperature swings.  Again, states has the most variable temperatures during the winter with temperature
+    differences of about 70-80 degrees F, massive temperature swings over the course of a month!  In September,
+    Oklahoma recorded a maximum temperature difference of about 200 degrees F, a swing from -100 to 100 degrees F!
+    This has to be an error, or Oklahoma is uninhabitable.
+
     </p>
   </div>
 
   <div class="entry">
     <h3>Summary</h3>
     <p>
-    WRITE FINAL SUMMARY HERE.
+    This daily weather dataset provides a deep insight into extreme Midwestern weather allowing for
+    rich characterization of extreme temperature, temperature swings, snow, rain, winds, and can even
+    help identify tornados.  Extreme winds and rains seem to preferentially occur during the Spring and Summer
+    months and near the Oklahoma-Kansas-Missouri border.  Using the granular station wind data, I was able to
+    identify 4 tornado event candidates and was able to rule out one as likely errant data.  
     </p>
   </div>
 </section>
