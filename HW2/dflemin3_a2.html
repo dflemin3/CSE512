@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  <title>CSE512 Assignment 2</title>
+  <style>
+* { padding: 0; margin: 0; }
+
+body {
+  margin: 0 auto 0 auto;
+  padding: 0;
+  background-color: #33333f;
+  width: 840px;
+  font-family: "Avenir", "Avenir Next", Helvetica Neue, Arial;
+  font-size: 0.95em;
+}
+
+a, a:visited { text-decoration: none; color: #7533f4; }
+a:hover { text-decoration: underline; color: #f4b014; }
+img, a.img, a:hover.img { border: none; }
+
+img {
+  max-width: 800px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #492a7c;
+  background-color: inherit;
+  font-weight: normal;
+  padding: 0 0 5px 0;
+  margin: 15px 0 0 0;
+  border: none;
+  clear: right;
+}
+h1 { font-size: 18pt; margin:  5px 0 10px 0; line-height: 28px; }
+h2 { font-size: 14pt; margin: 30px 0 15px 0; letter-spacing: 0.01em; border-bottom: 1px solid #ccc;  line-height: 20px;}
+h3 { font-size: 13pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 11pt; }
+p { margin: 0 0 10px 0; }
+hr { border: 0px; border-top: 1px solid #ccc; height: 0px; }
+ol { margin: 1em; }
+
+.content {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+
+.article {
+  line-height: 1.5em;
+}
+
+.entry  {
+  border-top: 1px solid #ddd;
+  padding-top: 2px;
+  margin-top: 3em;
+}
+  </style>
+</head>
+
+<body>
+<div class='content'>
+
+<section>
+  <h1>Assignment 2: Exploratory Data Analysis</h1>
+
+  <p>
+    <strong>David Fleming</strong> &mdash;
+    <em>dflemin3@uw.edu</em>
+  </p>
+</section>
+
+<section>
+  <h2>Dataset: Weather Measurements in 2017</h2>
+
+  <p>
+    The dataset I chose contains daily weather measurements at U.S.-based weather stations
+    in 2017.  The dataset, assembled by the National Oceanic and Atmospheric Administration
+    (NOAA) Daily Global Historical Climatology Network, includes information regarding
+    the temperature, precipitation accumulation, wind speed and direction, and snow accumulation
+    and depth for 100s of station in all U.S. states and territories. As a native
+    of the Midwest, a common phrase I heard while growing up is:
+    "If you don't like the weather, wait an hour."  This rich dataset provides an
+    opportunity to examine the extreme variability of Midwestern weather with exquisite
+    spatial and temporal precision.  To probe this variability, my analysis will
+    focus on the four main facets of punishing Midwestern weather: rain, wind, heat,
+    and snow.
+
+    Note that in this analysis, I consider the Midwest to consist of South Dakota,
+    Iowa, Nebraska, Kansas, Missouri, Oklahoma, and North Texas (north of Austin, TX).
+    There are many definitions of what states belong in the Midwest (what about North Dakota,
+    Illinois, Minnesota, why any part Texas, at all?), but my definition looks at the
+    "Midwest" where the extreme weather most commonly occurs, a subset of the region
+    commonly referred to as <a href="https://en.wikipedia.org/wiki/Tornado_Alley">"Tornado Alley"</a>.
+
+    TODO: make plot of measurement counts vs station?
+  </p>
+
+  <p>
+    The data is available online as a compressed csv file at:
+    <strong>
+      <a href="https://courses.cs.washington.edu/courses/cse512/18sp/data/weather.csv.gz">weather.csv.gz</a>
+    </strong>
+  </p>
+</section>
+
+<section>
+  <h2>Initial Analysis Questions</h2>
+  <ol>
+    <li><b>Overarching Question:</b> What can daily weather data reveal about extreme weather in the Midwest?</li>
+    <li>Which regions in the Midwest undergo the strongest winds?</li>
+    <li>Can one identify tornados, or when tornado season is, based off of the daily wind speed and rain data?</li>
+    <li>Where, and under what conditions, do Midwestern blizzards occur?</li>
+    <li>Which areas undergo the most extreme temperature differences?</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Discoveries &amp; Insights</h2>
+
+  <div class="entry">
+    <img src="avgGustSpeed.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxWindSpeedMonth.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="averageWindSpeeds.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxVsAvgWindSpeed.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="tornados.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxWindPerMonth.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="rainWindSpeed.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="totalPrecipQuarters.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="mostRainByStation.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxPrecipMonth.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxPrecipMaxGust.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="snowStateMonthArea.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="blizzard.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="avgMonthlyTemp.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="variableTemp.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <img src="maxDeltaT.png" />
+    <p class="caption">
+    ENTER IMAGE CAPTION HERE.
+    </p>
+  </div>
+
+  <div class="entry">
+    <h3>Summary</h3>
+    <p>
+    WRITE FINAL SUMMARY HERE.
+    </p>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
