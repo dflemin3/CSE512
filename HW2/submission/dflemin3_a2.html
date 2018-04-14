@@ -83,7 +83,7 @@ ol { margin: 1em; }
     winter, and watching intense early-summer thunderstorms roll across town.
     Severe, and often variable weather, is a cornerstone of life in the Midwest, and I
     hope to capture and analyse these phenomena. This rich dataset provides an
-    opportunity to examine the extreme Midwestern weather with exquisite
+    opportunity to examine extreme Midwestern weather with exquisite
     spatial and temporal precision.  My analysis will focus on the four main
     facets of punishing Midwestern weather: rain, wind, heat, and snow.
 
@@ -107,16 +107,22 @@ ol { margin: 1em; }
   <h2>Initial Analysis Questions</h2>
   <ol>
     <li><b>Overarching Question:</b> What can daily weather data reveal about extreme weather in the Midwest?</li>
-    <li>Which regions in the Midwest undergo the strongest winds?</li>
-    <li>Can one identify tornados based off of the daily wind speed and rain data?</li>
+    <li>Which regions in the Midwest undergo the strongest wind storms?</li>
     <li>Can I map severe Midwestern storms using daily wind speed and rain data?</li>
+    <li>Can one identify tornados based off of the daily wind speed and rain data?</li>
     <li>Where, and under what conditions, do Midwestern blizzards occur?</li>
-    <li>Which areas undergo the highest temperatures and most extreme temperature differences?</li>
+    <li>Which areas experience the highest temperatures and most extreme temperature differences?</li>
   </ol>
 </section>
 
 <section>
   <h2>Discoveries &amp; Insights</h2>
+
+  My analysis begins with examining the location of weather stations in my definition
+  of the Midwest. I then examine different aspects of Midwestern extreme weather,
+  from winds to rain to snow to heat and temperature variations.  For each aspect,
+  I start with a simple visualization, then refine each one and incorporate more
+  data to understand the data and the question. I used Tableau to create all my visualizations.
 
   <div class="entry">
     <img src="avgGustSpeed.png" />
@@ -126,7 +132,7 @@ ol { margin: 1em; }
     maximum 5-second sustained wind speed, which I define here as a "gust", to get a handle
     of the wind topography of the region. The stations mostly cluster in cities
     (see the noticable clusters near Dallas, TX, Oklahoma City, OK, St. Louis, MO, etc)
-    and many stations are actually located at airports.  From the point colors,
+    and many stations are located at airports, where regular weather measurements are required.  From the point colors,
     we can see that the gust speed is on average faster in the western
     "plains region" of the Midwest, the flat farm lands in north Texas, western
     OK, KS, NE, and SD.
@@ -137,8 +143,8 @@ ol { margin: 1em; }
     <img src="maxWindSpeedMonth.png" />
     <p class="caption">
     Given the trends seen in the previous figure, let's examine the maximum gust speed
-    in each state for each month in the dataset to identify where and when the most
-    intense gusts occur (note that the table redundantly encodes maximum gust speed for
+    recorded by a station in each state for each month to identify where and when the most
+    intense gusts occur (note that the table redundantly encodes maximum gust speed by color and value for
     clarity).  I display the maximum recorded gust speed by a station in each state
     and cut the color for maximum speed at 90 MPH, a rough minimum speed required for
     a windstorm to be a tornado (<a href="https://en.wikipedia.org/wiki/Fujita_scale">see the Fujita Scale</a>).
@@ -168,14 +174,16 @@ ol { margin: 1em; }
     for 3 quarters, Winter, Spring, and Summer, and plot trend lines, with errors. There are several stations
     that did not record any wind speed information (colored in orange), so I put those points at the origin.
     There does not appear to be a correlation during the Winter months (Q1), but there is a weak positive
-    correlation during the Spring and Summer (Q2, Q3, respectively).
+    correlation during the Spring and Summer (Q2, Q3, respectively).  A positive correlation makes sense since
+    naively, one would expect stronger gusts to occur when the average wind speed is high, perhaps because the
+    strong gust raises the average wind speed.  The tornado candidates appear as clear outliers.
     </p>
   </div>
 
   <div class="entry">
     <img src="tornados.png" />
     <p class="caption">
-    What about extremely strong wind gusts at individual stations in 2017, can we identify tornados?
+    What about extremely strong wind gusts at individual stations in 2017; can we identify tornados?
     I plot the location of all the stations and color them by the maximum recorded wind gust and
     identify the stations with the fastest gusts.  There are several with gusts of at least the
     threshold for a tornado, about 90 MPH, with two stations recording gusts in excess of 100 MPH, with
@@ -208,7 +216,7 @@ ol { margin: 1em; }
     The stations that record the most rain are at the Southern end of my
     latitude cut in Texas by the Gulf of Mexico and are likely recording rain from tropical storms,
     especially given the low gust speeds, a hallmark of sub-hurricane level winds.  Although several
-    station that record lots of rain also measure strong gusts, like in southern Oklahoma and
+    stations that record lots of rain also measure strong gusts, like in southern Oklahoma and
     southeastern Nebraska, there does not appear to be a strong link between maximum gust speeds and
     maximum precipitation.  Note that most stations in South Dakota are missing maximum precipitation data.
     </p>
@@ -222,7 +230,9 @@ ol { margin: 1em; }
     for each station)?  Note that several stations did not record average daily winds speeds, so I
     colored these points in grey to distinguish them from the rest of the dataset.  There is a
     noticable negative correlation between total precipitation and average daily wind speed suggesting
-    that windier areas get less rain, altough there is a significant amount of scatter.
+    that windier areas get less rain, altough there is a significant amount of scatter.  This correlation
+    is could be biased, however, as not all stations record data at the same cadence, so stations with more
+    records could record more rain than an equally-rainy location with less records.
     </p>
   </div>
 
@@ -255,11 +265,12 @@ ol { margin: 1em; }
   <div class="entry">
     <img src="maxPrecipMonth.png" />
     <p class="caption">
-    Now I plot maximum monthly precipitation by state, assuming that all stations in a state
-    contribute to the state's total, by month to see when each state receives the most of its rain.
+    Now I plot maximum monthly precipitation recorded in each state by month to see when each state receives the most of its rain.
     We see clear peaks in April from Missouri's April showers, and in August from the Texan Gulf of Mexico
     rain storms seen earlier.  Both South Dakota and Iowa have few intense storms that drop a lot of rain, while
-    Missouri, Oklahoma, and Texas all have numerous storms that drop inches of rain at a time.
+    Missouri, Oklahoma, and Texas all have numerous storms that drop inches of rain at a time.  There is an overall trend towards
+    more intense rain storms as the year progresses.  To match the low Winter maximum rain amounts, I anticipate that the missing
+    Fall data would show a decline in rain amounts.
     </p>
   </div>
 
@@ -267,23 +278,27 @@ ol { margin: 1em; }
     <img src="snowStateMonthArea.png" />
     <p class="caption">
     Now I examine a different type of precipitation, snow, by plotting the state-by-state snow totals, again
-    assuming that each state's stations totals contribute to the state's total.  Both Iowa and Nebraska dominate
-    the snow totals with most of this snow falling during January and February.  South Dakota would presumably
+    assuming that each state's stations totals contribute to the state's total.  As discussed previously, this
+    quantity could be biased as not all weather stations have the same amount of records, and not all states have
+    the same amount of stations, so states with more stations and more frequent measurements could artificially appear snowier.
+    Both Iowa and Nebraska dominate the snow totals with most of this snow falling during January and February.  South Dakota would presumably
     receive even more snow since it is north of both of those states, but there was no snow data for South Dakota.
-    I truncated this figure at June as no state recorded appreciable snow once the Summer began since as temperatures rise,
-    precipitation will obviously preferentially fall as rain.
+    I truncated this figure at June as no state recorded appreciable snow once the Summer began since as temperatures rise, any
+    precipitation will obviously fall as rain.  The record and station count bias does not significantly impact this chart's conclusions
+    as both Iowa and Nebraska have some of the fewest station counts, so their totals are not likely inflated relative to other states.
     </p>
   </div>
 
   <div class="entry">
     <img src="blizzard.png" />
     <p class="caption">
-    Given the state-by-state monthly totals, let's look at individual stations to see when extreme blizzards occur.
-    Specifically, how does maximum snow accumulation correlate with minimum average temperature. Many stations did not
+    Given the state-by-state monthly totals, let's look at individual stations to see under what conditions blizzards occur,
+    as we expect them to occur in states with the most snow accumulation.  To do so, I plot maximum snow accumulation as
+    as a function of minimum average temperature. Many stations did not
     record minimum temperatures or snow accumulations and are shown in orange.  As expected, appreciable snow measurements
     are recorded for minimum temperatures below freezing (32 degrees F).  The Scottsbluff, NE station had a particularly
     intense blizzard with over 14 inches of snow and a sub-zero minimum temperature.  Many stations in Texas got cold
-    enough for snow, but none was record.
+    enough for snow, but none was recorded.
     </p>
   </div>
 
@@ -302,21 +317,23 @@ ol { margin: 1em; }
     <img src="highTempHist.png" />
     <p class="caption">
     Midwestern temperatures can get brutally hot, so I plot a stacked histogram of
-    recorded high temperatures for each state.  Texas dominates the temperature highs with
+    recorded high temperatures for each state, sorted by the number of records.  Texas dominates the temperature highs with
     many maximum temperatures populating the 100-110 degrees F bin!  Most states' maximum
     temperatures range from 70-95 degrees F with the mode of the distribution located
-    around 90 degrees F.  Midwestern summers get quite hot.
+    around 90 degrees F.  From the previous figure (and experience), we know that the temperature peak
+    in the summers, so most of these temperature highs are in the summers, allowing me to
+    derive an obvious conclusion: Midwestern summers get quite hot.
     </p>
   </div>
 
   <div class="entry">
     <img src="variableTemp.png" />
     <p class="caption">
-     A common phrase I heard while growing up in the Midwest is: "If you don't like the weather, wait an hour."
-     In this figure, I plot the standard deviation of a state's stations average temperature measurements for
-     each month, a measure of how much the temperature changes in each state for each month.  Interestingly,
-     temperatures are most variable during the Winter months and least variable during the Summer months.
-     South Dakota consistently has the most variable temperatures with other flat plains states, Iowa and
+     In this figure, I visualize how variable temperatures can be across a state by plotting
+     the standard deviation of a state's stations average temperature measurements for
+     each month.  Interestingly, temperatures are most variable during the Winter months
+     and least variable during the Summer months. South Dakota consistently has the
+     most variable temperatures with other flat plains states, Iowa and
      Nebraska, also having higher variability than other Midwestern states.
     </p>
   </div>
@@ -324,11 +341,12 @@ ol { margin: 1em; }
   <div class="entry">
     <img src="maxDeltaT.png" />
     <p class="caption">
-    As an additional measure of temperature variability, I compute the maximum difference between the maximum
-    and minimum temperature for each state for each month to gauge what were the most extreme observed
-    temperature swings.  Again, states has the most variable temperatures during the winter with temperature
+    As an additional measure of temperature variability, I compute the difference between the maximum
+    and minimum temperature for each state for each month.  I plot the maximum recorded value from a station
+    in each state to probe what were the most extreme observed temperature swings.
+    Again, states have the most variable temperatures during the winter with temperature
     differences of about 70-80 degrees F, massive temperature swings over the course of a month!  In September,
-    Oklahoma recorded a maximum temperature difference of about 200 degrees F, a swing from -100 to 100 degrees F!
+    a station in Oklahoma recorded a maximum temperature difference of about 200 degrees F, a swing from -100 to 100 degrees F!
     This has to be an error, or Oklahoma is uninhabitable.
 
     </p>
@@ -341,7 +359,9 @@ ol { margin: 1em; }
     rich characterization of extreme temperature, temperature swings, snow, rain, winds, and can even
     help identify tornados.  Extreme winds and rains seem to preferentially occur during the Spring and Summer
     months and near the Oklahoma-Kansas-Missouri border.  Using the granular station wind data, I was able to
-    identify 4 tornado event candidates and was able to rule out one as likely errant data.  
+    identify 4 tornado event candidates and was able to rule out one as likely errant data.  I found that
+    Iowa and Nebraska experienced the most snowfall and that the most extreme temperature swings occur during
+    the Winter months.
     </p>
   </div>
 </section>
